@@ -498,7 +498,7 @@ app.get('/login', (req, res) => {
 app.get('/', (req, res) => {
     login.find()
         .then((result) => {
-            res.render('login', { idD: idDriver })
+            res.render('login.ejs', { idD: idDriver })
 
             result.forEach(item => {
                 accountsCheck.addHere(item.name, item.UserName, item.email, item.pass, item.role, item._id, item.id_device)

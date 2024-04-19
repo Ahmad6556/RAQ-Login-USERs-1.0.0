@@ -500,7 +500,7 @@ app.post("/:role/:idd/:id/manegAccount/:ide", (req, res) => {
 app.get('/Login', (req, res) => {
     login.find()
         .then((result) => {
-            res.render('login', { idD: idDriver })
+            res.render('Login', { idD: idDriver })
 
             result.forEach(item => {
                 accountsCheck.addHere(item.name, item.UserName, item.email, item.pass, item.role, item._id, item.id_device)

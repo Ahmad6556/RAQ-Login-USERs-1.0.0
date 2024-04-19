@@ -426,13 +426,6 @@ app.get("/:role/:idd/:id/mangAccounts/edit/:ide", (req, res) => {
 })
 
 app.post("/:role/:idd/:id/mangAccounts/edit/:ide", (req, res) => {
-    a = true
-    for (let i = 0; i < 1000000; i++) {
-        if (req.body.email == accountsCheck.accountsEmail[i] || req.body.name == accountsCheck.accountsName[i] || req.body.UserName == accountsCheck.accountUserName) {
-            a = false
-        }
-    }
-    if (a == true) {
         const accounts = new login(req.body);
         accounts
             .save()
@@ -444,9 +437,6 @@ app.post("/:role/:idd/:id/mangAccounts/edit/:ide", (req, res) => {
             .catch(err => {
                 console.log(err);
             });
-    } else if (a == false) {
-        res.redirect(`/${req.params.role}/${req.params.idd}/${req.params.id}/mangAccounts/edit/${req.params.ide}`)
-    }
 })
 
 //mange User Account
@@ -575,7 +565,7 @@ app.post('/login', (req, res) => {
                                     console.log(err);
                                 });
                         } catch (err) {
-                            console.error(err);
+                            console.log(err);
                             // handle error
                         }
                     }

@@ -14,7 +14,7 @@ const articleSchema = new Schema({
 
 
 // Create a model based on that schema
-const Article = mongoose.model("AccountsArtwi", articleSchema);
+const Article = mongoose.model("RAQAccounts", articleSchema);
 
 
 // export the model

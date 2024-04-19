@@ -59,12 +59,6 @@ const idDriver = machineIdSync();
 
 //index
 
-app.get("/", (req, res) => {
-    res.redirect("/login")
-})
-
-////index
-
 app.get('/:role/:idd/:id', (req, res) => {
     login.find()
         .then((result) => {
@@ -496,8 +490,12 @@ app.post("/:role/:idd/:id/manegAccount/:ide", (req, res) => {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+app.get('/login', (req, res) => {
+    res.redirect('/')
+})
 //login
-app.get('/Login', (req, res) => {
+app.get('/', (req, res) => {
     login.find()
         .then((result) => {
             res.render('login', { idD: idDriver })
@@ -520,7 +518,7 @@ app.get('/Login', (req, res) => {
         });
 })
 
-app.post('/login', (req, res) => {
+app.post('/', (req, res) => {
     email = req.body.email
     pass = req.body.pass
     id = accountsCheck.accountid

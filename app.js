@@ -6,6 +6,9 @@ const login = require('./schema/accounts')
 const accountsCheck = require('./public/accounts-hide')
 const RAQMibers = require('./schema/Schema')
 const RAQOrders = require("./schema/orders")
+import serverless from "serverless-http";
+
+const api = express();
 
 //more const
 app.set('view engine', 'ejs')
@@ -473,17 +476,17 @@ app.get("/:role/:idd/:id/manegAccount/:ide", (req, res) => {
 })
 
 app.post("/:role/:idd/:id/manegAccount/:ide", (req, res) => {
-        const accounts = new login(req.body);
-        accounts
-            .save()
-            .then(result => {
-                login.deleteOne({ _id: req.params.ide }).then((result) => {
-                    res.redirect(`/${req.params.role}/${req.params.idd}/${req.params.id}/`)
-                })
+    const accounts = new login(req.body);
+    accounts
+        .save()
+        .then(result => {
+            login.deleteOne({ _id: req.params.ide }).then((result) => {
+                res.redirect(`/${req.params.role}/${req.params.idd}/${req.params.id}/`)
             })
-            .catch(err => {
-                console.log(err);
-            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 })
 
 
@@ -619,9 +622,10 @@ app.post("/signUp", (req, res) => {
     }
 });
 
-/*
 app.use((req, res) => {
     res.status(404).redirect('/');
 });
 
-*/
+api.use("/api/", app);
+
+export const handler = serverless(api);

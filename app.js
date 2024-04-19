@@ -6,7 +6,6 @@ const login = require('./schema/accounts')
 const accountsCheck = require('./public/accounts-hide')
 const RAQMibers = require('./schema/Schema')
 const RAQOrders = require("./schema/orders")
-import serverless from "serverless-http";
 
 const api = express();
 
@@ -625,7 +624,3 @@ app.post("/signUp", (req, res) => {
 app.use((req, res) => {
     res.status(404).redirect('/');
 });
-
-api.use("/api/", app);
-
-export const handler = serverless(api);

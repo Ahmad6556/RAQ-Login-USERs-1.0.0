@@ -17,6 +17,6 @@
   "scripts": {
     "start": "node app.js",
     "watch": "nodemon --ext js,ejs --ignore public",
-    "netlify": "netlify deploy --prod"
+    "build": "netlify deploy --prod"
   }
 }

@@ -195,64 +195,7 @@
                             <main class="d-flex flex-nowrap">
 
                                 <section class="w-100">
-                                    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                                        <div class="container-fluid">
-                                            <a class="navbar-brand" href="#">RAQ</a>
-                                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#navbarNav" aria-controls="navbarNav"
-                                                aria-expanded="false" aria-label="Toggle navigation">
-                                                <span class="navbar-toggler-icon"></span>
-                                            </button>
-                                            <div class="collapse navbar-collapse" id="navbarNav">
-                                                <ul class="navbar-nav">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" aria-current="page"
-                                                            href="<%= main %>/">الصفحة
-                                                            الرئيسية</a>
-                                                    </li>
-                                                    <% if (item.role !="user" ) { %>
-                                                        <li class="nav-item">
-                                                            <a class="nav-link" href="<%= main %>/add">إضافة</a>
-                                                        </li>
-                                                        <% } %>
-                                                            <% if (item.role=="owner" || item.role=="founder" ) { %>
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link"
-                                                                        href="<%= main %>/profits">الأرباح</a>
-                                                                </li>
-                                                                <% } %>
-
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link"
-                                                                            href="<%= main %>/points">النقاط</a>
-                                                                    </li>
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link" aria-current="page"
-                                                                            href="<%= main %>/orders">الطلبات</a>
-                                                                    </li>
-                                                                    <% if (item.role=="owner" || item.role=="founder" ||
-                                                                        item.role=="manger" ) { %>
-                                                                        <li class="nav-item">
-                                                                            <a class="nav-link" aria-current="page"
-                                                                                href="<%= main %>/mangAccounts">إدارة
-                                                                                الحسابات</a>
-                                                                        </li>
-                                                                        <% } %>
-                                                </ul>
-                                                <ul class="navbar-nav">
-                                                    <li class="border-end">
-                                                        <a class="btn text-danger" href="/login">Logout</a>
-                                                        <%= item.name %>&nbsp;&nbsp;
-                                                    </li>
-                                                    <li class="border-end">
-                                                        <a class="btn"
-                                                            href="<%= main %>/manegAccount/<%= item._id %>">إدارة
-                                                            الحسابك</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </nav>
+                                    <%- include('./partials/heander.ejs') %>
 
                                     <nav>
                                         <form method="POST">

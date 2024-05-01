@@ -71,7 +71,7 @@ app.get('/:role/:idd/:id', (req, res) => {
             RAQMibers.find()
                 .sort({ "name": 1 })
                 .then((resultRAQ) => {
-                    res.render("index", { iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
+                    res.render("index", {dis: "index" ,iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
                 })
                 .catch((err) => {
                     console.log(err)
@@ -102,7 +102,7 @@ app.get('/:role/:idd/:id/add', (req, res) => {
             RAQMibers.find()
                 .sort({ "name": 1 })
                 .then((resultRAQ) => {
-                    res.render('add', { iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
+                    res.render('add', {dis: "add" ,iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
                 })
                 .catch((err) => {
                     console.log(err)
@@ -137,7 +137,7 @@ app.get('/:role/:idd/:id/data/:ide', (req, res) => {
             RAQMibers.find()
                 .sort({ "name": 1 })
                 .then((resultRAQ) => {
-                    res.render("data", { ide: req.params.ide, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` });
+                    res.render("data", {dis: "data" , ide: req.params.ide, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` });
                 })
                 .catch((err) => {
                     console.log(err)
@@ -163,7 +163,7 @@ app.get("/:role/:idd/:id/edit/:ide", (req, res) => {
             RAQMibers.find()
                 .sort({ "name": 1 })
                 .then((resultRAQ) => {
-                    res.render("edit", { ide: req.params.ide, item: result, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` });
+                    res.render("edit", {dis: "edit" , ide: req.params.ide, item: result, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` });
                 })
                 .catch((err) => {
                     console.log(err)
@@ -200,7 +200,7 @@ app.get('/:role/:idd/:id/profits', (req, res) => {
             RAQMibers.find()
                 .sort({ "name": 1 })
                 .then((resultRAQ) => {
-                    res.render("profits", { ide: req.params.ide, item: result, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` });
+                    res.render("profits", {dis: "profits", ide: req.params.ide, item: result, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` });
                 })
                 .catch((err) => {
                     console.log(err)
@@ -218,7 +218,7 @@ app.get('/:role/:idd/:id/points', (req, res) => {
             RAQMibers.find()
                 .sort({ "name": 1 })
                 .then((resultRAQ) => {
-                    res.render("points", { ide: req.params.ide, item: result, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` });
+                    res.render("points", { dis: "points" ,ide: req.params.ide, item: result, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` });
                 })
                 .catch((err) => {
                     console.log(err)
@@ -240,7 +240,7 @@ app.get("/:role/:idd/:id/orders", (req, res) => {
                     RAQOrders.find()
                         .sort({ "name": 1 })
                         .then((resultRAqOrders) => {
-                            res.render("orders", { Orders: resultRAqOrders, ide: req.params.ide, item: result, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` });
+                            res.render("orders", { dis: "orders" ,Orders: resultRAqOrders, ide: req.params.ide, item: result, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` });
                         })
                         .catch((err) => {
                             console.log(err)
@@ -280,7 +280,7 @@ app.get("/:role/:idd/:id/AddOrder", (req, res) => {
                     RAQOrders.find()
                         .sort({ "name": 1 })
                         .then((resultRAqOrders) => {
-                            res.render("AddOrders", { Orders: resultRAqOrders, ide: req.params.ide, item: result, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
+                            res.render("AddOrders", {dis: "AddOrder" , Orders: resultRAqOrders, ide: req.params.ide, item: result, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
                         })
                         .catch((err) => {
                             console.log(err)
@@ -317,7 +317,7 @@ app.get("/:role/:idd/:id/manegOrders/:ide", (req, res) => {
                 .then((resultRAQ) => {
                     RAQOrders.findById(req.params.ide)
                         .then((resultRAqOrders) => {
-                            res.render("mangeOrders", { Orders: resultRAqOrders, ide: req.params.ide, item: result, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` });
+                            res.render("mangeOrders", {dis: "manegOrders" , Orders: resultRAqOrders, ide: req.params.ide, item: result, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` });
                         })
                         .catch((err) => {
                             console.log(err);
@@ -352,13 +352,14 @@ app.post("/:role/:idd/:id/orders/delete/:ide", (req, res) => {
 
 //mangeAccounts
 
-app.get('/:role/:idd/:id/mangAccounts', (req, res) => {
+app.get('/:role/:idd/:id/MangAccounts', (req, res) => {
     login.find()
+        .sort({ "name": 1 })
         .then((result) => {
             RAQMibers.find()
                 .sort({ "name": 1 })
                 .then((resultRAQ) => {
-                    res.render("MangeAccounts", { iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
+                    res.render("MangeAccounts", { dis: "MangAccounts" ,iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
                 })
                 .catch((err) => {
                     console.log(err)
@@ -379,7 +380,7 @@ app.get("/:role/:idd/:id/mangAccounts/data/:ide", (req, res) => {
                     RAQMibers.find()
                         .sort({ "name": 1 })
                         .then((resultRAQ) => {
-                            res.render("MangeDataAccounts", { ide: resultD, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
+                            res.render("MangeDataAccounts", { dis: "deleteAccoutns" ,ide: resultD, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
                         })
                         .catch((err) => {
                             console.log(err)
@@ -410,7 +411,7 @@ app.get("/:role/:idd/:id/mangAccounts/edit/:ide", (req, res) => {
                     RAQMibers.find()
                         .sort({ "name": 1 })
                         .then((resultRAQ) => {
-                            res.render("MangeEditAccounts", { ide: resultD, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
+                            res.render("MangeEditAccounts", { dis: "MangeEditAccounts" ,ide: resultD, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
                         })
                         .catch((err) => {
                             console.log(err)
@@ -426,17 +427,17 @@ app.get("/:role/:idd/:id/mangAccounts/edit/:ide", (req, res) => {
 })
 
 app.post("/:role/:idd/:id/mangAccounts/edit/:ide", (req, res) => {
-        const accounts = new login(req.body);
-        accounts
-            .save()
-            .then(result => {
-                login.deleteOne({ _id: req.params.ide }).then((result) => {
-                    res.redirect(`/${req.params.role}/${req.params.idd}/${req.params.id}/mangAccounts`)
-                })
+    const accounts = new login(req.body);
+    accounts
+        .save()
+        .then(result => {
+            login.deleteOne({ _id: req.params.ide }).then((result) => {
+                res.redirect(`/${req.params.role}/${req.params.idd}/${req.params.id}/mangAccounts`)
             })
-            .catch(err => {
-                console.log(err);
-            });
+        })
+        .catch(err => {
+            console.log(err);
+        });
 })
 
 //mange User Account
@@ -449,7 +450,7 @@ app.get("/:role/:idd/:id/manegAccount/:ide", (req, res) => {
                     RAQMibers.find()
                         .sort({ "name": 1 })
                         .then((resultRAQ) => {
-                            res.render("editYouAccount", { ide: resultD, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
+                            res.render("editYouAccount", { dis: "editYouAccount" ,ide: resultD, iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
                         })
                         .catch((err) => {
                             console.log(err)
@@ -539,19 +540,20 @@ app.post('/login', (req, res) => {
                                             // حذف الوثيقة القديمة
                                             login.deleteOne({ _id: item._id }).then((result) => {
                                                 const data = {
+                                                    _id: item._id,
                                                     name: AN[i],
+                                                    nameYouMember: item.nameYouMember,
                                                     UserName: AU[i],
                                                     email: email,
                                                     pass: pass,
                                                     role: AR[i],
-                                                    id_device: idDriver,
-                                                    nameYouMember: item.nameYouMember
+                                                    id_device: idDriver
                                                 }
                                                 const accounts = new login(data);
                                                 accounts
                                                     .save()
                                                     .then(result => {
-                                                        res.redirect(`/${AR[i]}/${idDriver}/${email}`);
+                                                        res.redirect(`/${AR[i]}/${idDriver}/${email}/`);
                                                         accountsCheck.deleteArr()
                                                     })
                                                     .catch(err => {
@@ -610,6 +612,74 @@ app.post("/signUp", (req, res) => {
         res.redirect("/signUp")
     }
 });
+
+app.post("/:role/:idd/:id/Logout", (req, res) => {
+    id = accountsCheck.accountid
+    AE = accountsCheck.accountsEmail
+    AP = accountsCheck.accountPass
+    AR = accountsCheck.AccountRole
+    AN = accountsCheck.accountsName
+    AU = accountsCheck.accountUserName
+    AIDD = accountsCheck.Accountid_device
+
+    for (let i = 0; i < 1000000; i++) {
+        if (AE[i] == req.params.id) {
+            if (AR[i] == req.params.role) {
+
+                    // تعريف الدالة غير المتزامنة
+                    async function updateLogin() {
+                        try {
+                            login.find()
+                                .then((result) => {
+                                    result.forEach(item => {
+                                        if (item.email == AE[i]) {
+                                            // حذف الوثيقة القديمة
+                                            login.deleteOne({ _id: item._id }).then((result) => {
+                                                const data = {
+                                                    _id: item._id,
+                                                    name: AN[i],
+                                                    nameYouMember: item.nameYouMember,
+                                                    UserName: AU[i],
+                                                    email: AE[i],
+                                                    pass: AP[i],
+                                                    role: AR[i],
+                                                    id_device: "logout"
+                                                }
+                                                const accounts = new login(data);
+                                                accounts
+                                                    .save()
+                                                    .then(result => {
+                                                        res.redirect(`/login`);
+                                                        accountsCheck.deleteArr()
+                                                    })
+                                                    .catch(err => {
+                                                        console.log(err);
+                                                    });
+                                            });
+                                        }
+                                    });
+                                })
+                                .catch((err) => {
+                                    console.log(err);
+                                });
+                        } catch (err) {
+                            console.log(err);
+                            // handle error
+                        }
+                    }
+
+                    // استدعاء الدالة غير المتزامنة
+                    updateLogin();
+                    // إنشاء حساب
+            }
+            else if (i == 1000000) {
+                res.redirect('/Login')
+            }
+        } else if (i == 1000000) {
+            res.redirect('/Login')
+        }
+    }
+})
 
 app.use((req, res) => {
     res.status(404).redirect('/');

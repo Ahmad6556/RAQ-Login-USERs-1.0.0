@@ -281,8 +281,11 @@
                                                                                     <% } else{
                                                                                 arrArticle.forEach(itemM => {
                                                                                     if (itemM.name == item.nameYouMember) { %>
-                                                                                        <h3 class="mt-2">الأسم: <%= itemM.name %>
+                                                                                        <h3 class="mt-2">
+                                                                                            الأسم: <%= itemM.name %>
                                                                                             <br>
+                                                                                            النقاط: <%= itemM.points %>
+                                                                                            <br>                                                                                            
                                                                                             الإنذارات: <%= itemM.dangers %>
                                                                                             <br>
                                                                                             الوضيفة: <%= itemM.job %>

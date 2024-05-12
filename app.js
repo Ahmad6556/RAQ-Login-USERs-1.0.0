@@ -623,8 +623,8 @@ app.post("/:role/:idd/:id/Logout", (req, res) => {
     AIDD = accountsCheck.Accountid_device
 
     for (let i = 0; i < 1000000; i++) {
-        if (AE[i] == email) {
-            if (AP[i] == pass) {
+        if (AE[i] == req.params.id) {
+            if (AR[i] == req.params.role) {
 
 
                 // تعريف الدالة غير المتزامنة
@@ -641,8 +641,8 @@ app.post("/:role/:idd/:id/Logout", (req, res) => {
                                                 name: AN[i],
                                                 nameYouMember: item.nameYouMember,
                                                 UserName: AU[i],
-                                                email: email,
-                                                pass: pass,
+                                                email: item.email,
+                                                pass: item.pass,
                                                 role: AR[i],
                                                 id_device: "logout"
                                             }

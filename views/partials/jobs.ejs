@@ -1,0 +1,98 @@
+<% DB.forEach(item=> { %>
+    <% if (Email==item.email && Show==true) { %>
+        <% if (item.role=="owner" || item.role=="founder" ) { %>
+            <optgroup label="الرتب العليا">
+                <option value="مؤسس">مؤسس</option>
+                <option value="مساعد مؤسس">مساعد مؤسس</option>
+                <option value="مدير عام">مدير عام</option>
+                <option value="نائب مدير عام">نائب مدير عام</option>
+            </optgroup>
+            <% } %>
+                <optgroup label="الإدارة">
+                    <% if (item.role=="owner" || item.role=="founder" ) { %>
+                        <option value="مدير الإدارة">مدير الإدارة</option>
+                        <option value="نائب مدير الإدارة">نائب مدير الإدارة
+                        </option>
+                        <% } %>
+                            <option value="إداري">إداري</option>
+                            <option value="مساعد إداري">مساعد إداري</option>
+                            <option value="مساعد مساعدين">مساعد مساعدين
+                            </option>
+                </optgroup>
+                <optgroup label="الاعبين المحترفين">
+                    <% if (item.role=="owner" || item.role=="founder" ) { %>
+                        <option value="مدير الاعبين المحترفين">مدير الاعبين
+                            المحترفين
+                        </option>
+                        <option value="نائب مدير الاعبين المحترفين">نائب
+                            مدير الاعبين
+                            المحترفين</option>
+                        <% } %>
+                        <option value="مدرب لاعبين محترفين">مدرب لاعبين محترفين</option>
+                        <option value="نائب مدرب الاعبين المحترفين">نائب مدرب الاعبين المحترفين</option>
+                            <option value="محدد بطولات">محدد بطولات</option>
+                            <option value="نائب محدد بطولات">نائب محدد
+                                بطولات</option>
+                            <option value="قائد الاعبين العام">قائد الاعبين
+                                العام</option>
+                            <option value="قائد الاعبين الخاص">قائد الاعبين
+                                الخاص</option>
+                            <option value="الاعبين المحترفين">الاعبين
+                                المحترفين</option>
+                            <option value="الاعبين المحترفين احتياط">الاعبين
+                                المحترفين
+                                احتياط</option>
+                </optgroup>
+                <optgroup label="البرمجة">
+                    <% if (item.role=="owner" || item.role=="founder" ) { %>
+                        <option value="مدير المبرمجين">مدير المبرمجين
+                        </option>
+                        <option value="نائب مدير المبرمجين">نائب مدير
+                            المبرمجين</option>
+                        <% } %>
+                            <option value="مشرف عام">مشرف عام</option>
+                            <option value="نائب مشرف عام">نائب مشرف عام
+                            </option>
+                            <option value="رئيس الأدارة">رئيس الإدارة
+                            </option>
+                            <option value="نائب رئيس الآدارة">نائب رئيس
+                                الإدارة</option>
+                <optgroup label="التطبيقات">
+                    <% if (item.role=="owner" || item.role=="founder" ) { %>
+                        <option value="مدير التطبيقات">مدير التطبيقات
+                        </option>
+                        <% } %>
+                            <option value="مبرمج تطبيقات اساس">مبرمج تطبيقات
+                                اساس</option>
+                            <option value="مبرمج تطبيقات">مبرمج تطبيقات
+                            </option>
+                            <option value="مساعد مبرمج تطبيقات">مساعد مبرمج
+                                تطبيقات</option>
+                </optgroup>
+                <optgroup label="المواقع">
+                    <% if (item.role=="owner" || item.role=="founder" ) { %>
+                        <option value="مدير المواقع">مدير المواقع</option>
+                        <% } %>
+                            <option value="مبرمج مواقع اساس">مبرمج مواقع
+                                اساس</option>
+                            <option value="مبرمج مواقع">مبرمج مواقع</option>
+                            <option value="مساعد مبرمج مواقع">مساعد مبرمج
+                                مواقع</option>
+                </optgroup>
+                </optgroup>
+                <optgroup label="صناع المحتوى">
+                    <% if (item.role=="owner" || item.role=="founder" ) { %>
+                        <option value="مدير صناع المحتوى">مدير صناع المحتوى
+                        </option>
+                        <option value="نائب مدير صناع المحتوى">نائب مدير
+                            صناع المحتوى
+                        </option>
+                        <% } %>
+                            <option value="صانع محتوى">صانع محتوى</option>
+                            <option value="مساعد صانع محتوى">مساعد صانع
+                                محتوى</option>
+                            <option value="محرر">محرر</option>
+                            <option value="مساعد محرر">مساعد محرر</option>
+                </optgroup>
+
+                <% }}) %>

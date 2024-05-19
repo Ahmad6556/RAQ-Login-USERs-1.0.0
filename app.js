@@ -521,6 +521,7 @@ app.post('/login', (req, res) => {
     AN = accountsCheck.accountsName
     AU = accountsCheck.accountUserName
     AIDD = accountsCheck.Accountid_device
+    isMe = true
 
     for (let i = 0; i < 1000000; i++) {
         if (AE[i] == email) {
@@ -528,6 +529,7 @@ app.post('/login', (req, res) => {
 
                 if (idDriver == AIDD[i]) {
                     res.redirect(`/${AR[i]}/${AIDD[i]}/${email}`);
+                    isMe = false
                     accountsCheck.deleteArr()
                 } else if (idDriver != AIDD[i]) {
                     // تعريف الدالة غير المتزامنة
@@ -554,6 +556,7 @@ app.post('/login', (req, res) => {
                                                     .save()
                                                     .then(result => {
                                                         res.redirect(`/${AR[i]}/${idDriver}/${email}/`);
+                                                        isMe = false
                                                         accountsCheck.deleteArr()
                                                     })
                                                     .catch(err => {
@@ -577,10 +580,10 @@ app.post('/login', (req, res) => {
                     // إنشاء حساب
                 }
             }
-            else if (i == 199999) {
+            else if (i == 199999 && isMe == true) {
                 res.redirect('/Login')
             }
-        } else if (i == 199999) {
+        } else if (i == 199999 && isMe == true) {
             res.redirect('/Login')
         }
     }

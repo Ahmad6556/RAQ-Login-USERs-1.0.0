@@ -104,20 +104,6 @@
                                 }
                             </style>
 
-                            <style>
-                                @media screen and (max-width:400px) {
-                                    .inp {
-                                        width: 50%;
-                                    }
-                                }
-
-                                @media screen and (min-width:895px) {
-                                    .inp {
-                                        width: 25%;
-                                    }
-                                }
-                            </style>
-
                             <!-- Custom styles for this template -->
                             <link href="/sidebars.css" rel="stylesheet" />
                             <link rel="stylesheet" href="/myStyle.css" />
@@ -197,98 +183,38 @@
 
                                 <section class="w-100">
                                     <%- include('./partials/heander.ejs') %>
-                                        <nav>
-                                            <form action="<%= main %>/" method="POST">
-                                                <center>
-                                                    <div class="form-floating my-3 inp">
-                                                        <input dir="rtl" type="text" class="form-control name" id="name"
-                                                            name="name" placeholder="الإسم" required>
-                                                        <label for="name">الأسم</label>
-                                                    </div>
 
-                                                    <label class="mb-1" for="job">الوظيفة</label>
-                                                    <select style="width: 200px;" class="text form-select mb-3"
-                                                        type="text" id="job" name="job" required>
-                                                        <%- include('./partials/jobs.ejs') %>
-                                                        <option selected value="انتظار">انتظار</option>
-                                                    </select>
-                                                    <label class="mb-1" for="lastJob">الوضيفة القديمة</label><br>
-                                                    <select style="width: 200px;" class="text form-select" type="text"
-                                                        id="lastJob" name="lastJob" required>
-                                                        <%- include('./partials/jobs.ejs') %>
-                                                                <option selected value="لا يوجد">لا يوجد</option>
-                                                    </select>
+                                        <center>
+                                            <nav>
+                                                <h3>
+                                                    الإسم: <%= RG.name %>
+                                                        <br>
+                                                        الوصف: <%= RG.des %>
+                                                            <br>
+                                                            تاريخ البداية: <%= RG.StartTime %>
+                                                                <br>
+                                                                تاريخ النهاية: <%= RG.EndTime %>
+                                                                    <br>
+                                                                    الأشخاص: <%= RG.member1 %> و <%= RG.member2 %> و <%=
+                                                                                RG.member3 %> و <%= RG.member4 %>
+                                                </h3>
 
-
-                                                    <div class="form-floating my-3 inp">
-                                                        <input dir="rtl" type="text" class="form-control" id="pads"
-                                                            name="pads" placeholder="المنصة" required>
-                                                        <label for="pads">المنصة</label>
-                                                    </div>
-
-                                                    <div class="form-floating my-3 inp">
-                                                        <input dir="rtl" type="text" class="form-control name"
-                                                            id="nameChanel" name="nameChanel" placeholder="اسم القناة"
-                                                            required>
-                                                        <label for="nameChanel">أسم القناة</label>
-                                                    </div>
+                                                <% if (item.role !="user" ) { %>
+                                                    <form method="post">
+                                                        <button data-bs-toggle="tooltip" data-bs-title="حذف"
+                                                            data-bs-placement="top" class="btn btn-danger btn-sm create"
+                                                            onclick="Delete()" data-linkid="<%= RG._id %>">
+                                                            🗑
+                                                        </button>
+                                                    </form>
+                                                    <br>
+                                                    <a class="btn btn-info"
+                                                        href="<%= main %>/GoalsE/<%= RG._id %>">تعديل</a>
+                                                    <% } %>
 
 
-                                                    <div class="form-floating my-3 inp">
-                                                        <input dir="rtl" type="text" class="form-control" id="PhoneNum"
-                                                            name="PhoneNum" placeholder="رقم الهاتف" required>
-                                                        <label for="PhoneNum">رقم الهاتف</label>
-                                                    </div>
-
-                                                    <% if (item.role=="owner" ) { %>
-                                                        <div class="form-check my-3 inp">
-                                                            <input class="form-check-input hide" id="hide" name="hide"
-                                                                type="checkbox" id="flexCheckDefault">
-                                                            <label class="form-check-label" for="flexCheckDefault">
-                                                                إخفاء
-                                                            </label>
-                                                        </div>
-                                                        <% } %>
-
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="text" class="form-control"
-                                                                    id="points" name="points" placeholder="النقاط"
-                                                                    required>
-                                                                <label for="points">النقاط</label>
-                                                            </div>
-
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="text" class="form-control name"
-                                                                    id="name" name="dangers" placeholder="الإنذارات">
-                                                                <label for="name">سبب الإنذار</label>
-                                                            </div>
-
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="date" class="form-control name"
-                                                                    id="name" name="dangers" placeholder="الإنذارات">
-                                                                <label for="name">تاريخ الإنذار</label>
-                                                            </div>
-
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="text" class="form-control"
-                                                                    id="dateYear" name="dateYear"
-                                                                    placeholder="سنة الميلاد" required>
-                                                                <label for="points">سنة الميلاد</label>
-                                                            </div>
-
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="text" class="form-control"
-                                                                    id="profits" name="profits" placeholder="الأرباح"
-                                                                    required>
-                                                                <label for="profits">الأرباح</label>
-                                                            </div>
-
-                                                            <button class="create btn btn-info my-2">إضافة</button> 
-
-                                                </center>
-                                            </form>
-
-                                        </nav>
+                                            </nav>
+                                        </center>
                                 </section>
                             </main>
                             <br>

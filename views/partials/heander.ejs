@@ -34,6 +34,10 @@
                                             <a class="nav-link <%if(dis == 'orders'){%> disabled <%}%>"
                                                 aria-current="page" href="<%= main %>/orders">الطلبات</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link <%if(dis == 'Goals'){%> disabled <%}%>"
+                                                aria-current="page" href="<%= main %>/Goals">أهداف</a>
+                                        </li>
                                         <% if (item.role=="owner" || item.role=="founder" || item.role=="manger" ) { %>
                                             <li class="nav-item">
                                                 <a class="nav-link <%if(dis == 'MangAccounts'){%> disabled <%}%>"

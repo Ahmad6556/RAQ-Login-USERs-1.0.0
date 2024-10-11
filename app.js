@@ -1,11 +1,12 @@
 //const
 const express = require('express')
 const app = express()
-const port = 3000 || process.env.PORT 
+const port = 3000 || process.env.PORT
 const login = require('./schema/accounts')
 const accountsCheck = require('./public/accounts-hide')
 const RAQMibers = require('./schema/Schema')
 const RAQOrders = require("./schema/orders")
+const RAQGoals = require("./schema/Goals")
 
 const api = express();
 
@@ -88,6 +89,135 @@ app.post('/:role/:idd/:id', (req, res) => {
         .save()
         .then(result => {
             res.redirect(`/${req.params.role}/${req.params.idd}/${req.params.id}`);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+})
+
+//Goals
+
+app.get('/:role/:idd/:id/Goals', (req, res) => {
+    login.find()
+        .then((result) => {
+            RAQMibers.find()
+                .sort({ "name": 1 })
+                .then((resultRAQ) => {
+                    RAQGoals.find()
+                        .then((resultGoals) => {
+                            res.render("Goals", { RG: resultGoals, dis: "Goals", iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
+                        }).catch((err) => {
+                            console.log(err)
+                        })
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+
+//Add Goals
+
+app.get('/:role/:idd/:id/Goals/add', (req, res) => {
+    login.find()
+        .then((result) => {
+            RAQMibers.find()
+                .sort({ "name": 1 })
+                .then((resultRAQ) => {
+                    RAQGoals.find()
+                        .then((resultGoals) => {
+                            res.render("Goals_add", { RG: resultGoals, dis: "0", iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
+                        }).catch((err) => {
+                            console.log(err)
+                        })
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+
+app.post('/:role/:idd/:id/Goals/add', (req, res) => {
+    const article = new RAQGoals(req.body);
+    article
+        .save()
+        .then(result => {
+            res.redirect(`/${req.params.role}/${req.params.idd}/${req.params.id}/Goals`);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+})
+
+// details Goals
+
+app.get("/:role/:idd/:id/Goals/:DGId", (req, res) => {
+    login.find()
+        .then((result) => {
+            RAQMibers.find()
+                .sort({ "name": 1 })
+                .then((resultRAQ) => {
+                    RAQGoals.findById(req.params.DGId)
+                        .then((resultGoals) => {
+                            res.render("Goals_details", { RG: resultGoals, iiiiD: req.params.DGId, dis: "0", iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
+                        }).catch((err) => {
+                            console.log(err)
+                        })
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+
+app.post("/:role/:idd/:id/Goals/:DGId", (req, res) => {
+    RAQGoals.deleteOne({ _id: req.params.DGId }).then((result) => {
+        console.log("deleted");
+        res.redirect(`/${req.params.role}/${req.params.idd}/${req.params.id}/Goals`)
+    });
+})
+
+// edit Goals
+
+app.get("/:role/:idd/:id/GoalsE/:DGId", (req, res) => {
+    login.find()
+        .then((result) => {
+            RAQMibers.find()
+                .sort({ "name": 1 })
+                .then((resultRAQ) => {
+                    RAQGoals.findById(req.params.DGId)
+                        .then((resultGoals) => {
+                            res.render("Goals_edit", { RG: resultGoals, iiiiD: req.params.DGId, dis: "0", iddt: idDriver, Email: req.params.id, DB: result, arrArticle: resultRAQ, role: req.params.role, main: `/${req.params.role}/${req.params.idd}/${req.params.id}` })
+                        }).catch((err) => {
+                            console.log(err)
+                        })
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+
+app.post("/:role/:idd/:id/GoalsE/:DGId", (req, res) => {
+    const article = new RAQGoals(req.body);
+    article
+        .save()
+        .then(result => {
+            RAQGoals.deleteOne({ _id: req.params.DGId }).then((result) => {
+                res.redirect(`/${req.params.role}/${req.params.idd}/${req.params.id}/Goals`);
+            });
         })
         .catch(err => {
             console.log(err);

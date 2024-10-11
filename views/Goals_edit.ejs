@@ -104,20 +104,6 @@
                                 }
                             </style>
 
-                            <style>
-                                @media screen and (max-width:400px) {
-                                    .inp {
-                                        width: 50%;
-                                    }
-                                }
-
-                                @media screen and (min-width:895px) {
-                                    .inp {
-                                        width: 25%;
-                                    }
-                                }
-                            </style>
-
                             <!-- Custom styles for this template -->
                             <link href="/sidebars.css" rel="stylesheet" />
                             <link rel="stylesheet" href="/myStyle.css" />
@@ -197,96 +183,65 @@
 
                                 <section class="w-100">
                                     <%- include('./partials/heander.ejs') %>
-                                        <nav>
-                                            <form action="<%= main %>/" method="POST">
+
+                                        <nav class="d-flex flex-row nav d-flex justify-content-center">
+                                            <% if (item.role=="owner" || item.role=="founder" || item.role=="manger" ) {
+                                                %>
                                                 <center>
-                                                    <div class="form-floating my-3 inp">
-                                                        <input dir="rtl" type="text" class="form-control name" id="name"
-                                                            name="name" placeholder="الإسم" required>
-                                                        <label for="name">الأسم</label>
-                                                    </div>
-
-                                                    <label class="mb-1" for="job">الوظيفة</label>
-                                                    <select style="width: 200px;" class="text form-select mb-3"
-                                                        type="text" id="job" name="job" required>
-                                                        <%- include('./partials/jobs.ejs') %>
-                                                        <option selected value="انتظار">انتظار</option>
-                                                    </select>
-                                                    <label class="mb-1" for="lastJob">الوضيفة القديمة</label><br>
-                                                    <select style="width: 200px;" class="text form-select" type="text"
-                                                        id="lastJob" name="lastJob" required>
-                                                        <%- include('./partials/jobs.ejs') %>
-                                                                <option selected value="لا يوجد">لا يوجد</option>
-                                                    </select>
-
-
-                                                    <div class="form-floating my-3 inp">
-                                                        <input dir="rtl" type="text" class="form-control" id="pads"
-                                                            name="pads" placeholder="المنصة" required>
-                                                        <label for="pads">المنصة</label>
-                                                    </div>
-
-                                                    <div class="form-floating my-3 inp">
-                                                        <input dir="rtl" type="text" class="form-control name"
-                                                            id="nameChanel" name="nameChanel" placeholder="اسم القناة"
-                                                            required>
-                                                        <label for="nameChanel">أسم القناة</label>
-                                                    </div>
-
-
-                                                    <div class="form-floating my-3 inp">
-                                                        <input dir="rtl" type="text" class="form-control" id="PhoneNum"
-                                                            name="PhoneNum" placeholder="رقم الهاتف" required>
-                                                        <label for="PhoneNum">رقم الهاتف</label>
-                                                    </div>
-
-                                                    <% if (item.role=="owner" ) { %>
-                                                        <div class="form-check my-3 inp">
-                                                            <input class="form-check-input hide" id="hide" name="hide"
-                                                                type="checkbox" id="flexCheckDefault">
-                                                            <label class="form-check-label" for="flexCheckDefault">
-                                                                إخفاء
-                                                            </label>
+                                                    <form method="post">
+                                                        <div class="form-floating my-3 inp">
+                                                            <input type="text" value="<%= RG.name %>" class="form-control" name="name"
+                                                                id="floatingInput" placeholder="" required>
+                                                            <label for="floatingInput">إسم الهدف</label>
                                                         </div>
-                                                        <% } %>
 
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="text" class="form-control"
-                                                                    id="points" name="points" placeholder="النقاط"
-                                                                    required>
-                                                                <label for="points">النقاط</label>
-                                                            </div>
+                                                        <div class="form-floating my-3 inp">
+                                                            <input type="text" value="<%= RG.des %>" class="form-control" name="des"
+                                                                id="floatingInput" placeholder="" required>
+                                                            <label for="floatingInput">التفاصيل</label>
+                                                        </div>
 
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="text" class="form-control name"
-                                                                    id="name" name="dangers" placeholder="الإنذارات">
-                                                                <label for="name">سبب الإنذار</label>
-                                                            </div>
+                                                        <div class="form-floating my-3 inp">
+                                                            <input type="date" value="<%= RG.StartTime %>" class="form-control" name="StartTime"
+                                                                id="floatingInput" placeholder="" required>
+                                                            <label for="floatingInput">وقت البداية</label>
+                                                        </div>
 
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="date" class="form-control name"
-                                                                    id="name" name="dangers" placeholder="الإنذارات">
-                                                                <label for="name">تاريخ الإنذار</label>
-                                                            </div>
+                                                        <div class="form-floating my-3 inp">
+                                                            <input type="date" value="<%= RG.EndTime %>" class="form-control" name="EndTime"
+                                                                id="floatingInput" placeholder="" required>
+                                                            <label for="floatingInput">وقت النهاية</label>
+                                                        </div>
 
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="text" class="form-control"
-                                                                    id="dateYear" name="dateYear"
-                                                                    placeholder="سنة الميلاد" required>
-                                                                <label for="points">سنة الميلاد</label>
-                                                            </div>
+                                                        <div class="form-floating my-3 inp">
+                                                            <input type="text" value="<%= RG.member1 %>" class="form-control" name="member1"
+                                                                id="floatingInput" placeholder="" required>
+                                                            <label for="floatingInput">العضو الأول</label>
+                                                        </div>
 
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="text" class="form-control"
-                                                                    id="profits" name="profits" placeholder="الأرباح"
-                                                                    required>
-                                                                <label for="profits">الأرباح</label>
-                                                            </div>
+                                                        <div class="form-floating my-3 inp">
+                                                            <input type="text" value="<%= RG.member2 %>" class="form-control" name="member2"
+                                                                id="floatingInput" placeholder="" required>
+                                                            <label for="floatingInput">العضو الثاني</label>
+                                                        </div>
 
-                                                            <button class="create btn btn-info my-2">إضافة</button> 
+                                                        <div class="form-floating my-3 inp">
+                                                            <input type="text" value="<%= RG.member3 %>" class="form-control" name="member3"
+                                                                id="floatingInput" placeholder="" required>
+                                                            <label for="floatingInput">العضو الثالث</label>
+                                                        </div>
 
+                                                        <div class="form-floating my-3 inp">
+                                                            <input type="text" value="<%= RG.member4 %>" class="form-control" name="member4"
+                                                                id="floatingInput" placeholder="" required>
+                                                            <label for="floatingInput">العضو الرابع</label>
+                                                        </div>
+
+                                                        <button class="create btn btn-info my-2">تعديل الهدف</button> 
+                                                    </form>
                                                 </center>
-                                            </form>
+                                                <% } %>
+
 
                                         </nav>
                                 </section>

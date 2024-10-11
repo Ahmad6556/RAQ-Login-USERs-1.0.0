@@ -197,97 +197,36 @@
 
                                 <section class="w-100">
                                     <%- include('./partials/heander.ejs') %>
+
+                                        <nav class="d-flex flex-row nav d-flex justify-content-center">
+                                            <% RG.forEach(itemG=> {%>
+                                                <div class="card my-2 mx-2" style="width: 18rem;">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">
+                                                            <%= itemG.name %>
+                                                        </h5>
+                                                        <h6 class="card-subtitle mb-2 text-body-secondary">
+                                                            <%= itemG.des %>
+                                                        </h6>
+                                                        <br>
+                                                        <a data-bs-toggle="tooltip" data-bs-title="تفاصيل"
+                                                            data-bs-placement="top" class="btn btn-primary btn-sm"
+                                                            href="<%= main %>/Goals/<%= itemG._id %>">التفاصيل</a>
+                                                    </div>
+
+                                                </div>
+                                                <% if (item.role=="user" ) {} })%>
+                                        </nav>
                                         <nav>
-                                            <form action="<%= main %>/" method="POST">
+                                            <% if (item.role=="owner" || item.role=="founder" || item.role=="manger" ) {
+                                                %>
                                                 <center>
-                                                    <div class="form-floating my-3 inp">
-                                                        <input dir="rtl" type="text" class="form-control name" id="name"
-                                                            name="name" placeholder="الإسم" required>
-                                                        <label for="name">الأسم</label>
+                                                    <div>
+                                                        <a class="btn btn-primary" href="<%= main %>/Goals/add">إضافة
+                                                            هدف</a>
                                                     </div>
-
-                                                    <label class="mb-1" for="job">الوظيفة</label>
-                                                    <select style="width: 200px;" class="text form-select mb-3"
-                                                        type="text" id="job" name="job" required>
-                                                        <%- include('./partials/jobs.ejs') %>
-                                                        <option selected value="انتظار">انتظار</option>
-                                                    </select>
-                                                    <label class="mb-1" for="lastJob">الوضيفة القديمة</label><br>
-                                                    <select style="width: 200px;" class="text form-select" type="text"
-                                                        id="lastJob" name="lastJob" required>
-                                                        <%- include('./partials/jobs.ejs') %>
-                                                                <option selected value="لا يوجد">لا يوجد</option>
-                                                    </select>
-
-
-                                                    <div class="form-floating my-3 inp">
-                                                        <input dir="rtl" type="text" class="form-control" id="pads"
-                                                            name="pads" placeholder="المنصة" required>
-                                                        <label for="pads">المنصة</label>
-                                                    </div>
-
-                                                    <div class="form-floating my-3 inp">
-                                                        <input dir="rtl" type="text" class="form-control name"
-                                                            id="nameChanel" name="nameChanel" placeholder="اسم القناة"
-                                                            required>
-                                                        <label for="nameChanel">أسم القناة</label>
-                                                    </div>
-
-
-                                                    <div class="form-floating my-3 inp">
-                                                        <input dir="rtl" type="text" class="form-control" id="PhoneNum"
-                                                            name="PhoneNum" placeholder="رقم الهاتف" required>
-                                                        <label for="PhoneNum">رقم الهاتف</label>
-                                                    </div>
-
-                                                    <% if (item.role=="owner" ) { %>
-                                                        <div class="form-check my-3 inp">
-                                                            <input class="form-check-input hide" id="hide" name="hide"
-                                                                type="checkbox" id="flexCheckDefault">
-                                                            <label class="form-check-label" for="flexCheckDefault">
-                                                                إخفاء
-                                                            </label>
-                                                        </div>
-                                                        <% } %>
-
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="text" class="form-control"
-                                                                    id="points" name="points" placeholder="النقاط"
-                                                                    required>
-                                                                <label for="points">النقاط</label>
-                                                            </div>
-
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="text" class="form-control name"
-                                                                    id="name" name="dangers" placeholder="الإنذارات">
-                                                                <label for="name">سبب الإنذار</label>
-                                                            </div>
-
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="date" class="form-control name"
-                                                                    id="name" name="dangers" placeholder="الإنذارات">
-                                                                <label for="name">تاريخ الإنذار</label>
-                                                            </div>
-
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="text" class="form-control"
-                                                                    id="dateYear" name="dateYear"
-                                                                    placeholder="سنة الميلاد" required>
-                                                                <label for="points">سنة الميلاد</label>
-                                                            </div>
-
-                                                            <div class="form-floating my-3 inp">
-                                                                <input dir="rtl" type="text" class="form-control"
-                                                                    id="profits" name="profits" placeholder="الأرباح"
-                                                                    required>
-                                                                <label for="profits">الأرباح</label>
-                                                            </div>
-
-                                                            <button class="create btn btn-info my-2">إضافة</button> 
-
                                                 </center>
-                                            </form>
-
+                                                <% } %>
                                         </nav>
                                 </section>
                             </main>
